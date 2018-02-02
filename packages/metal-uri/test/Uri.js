@@ -154,6 +154,14 @@ describe('Uri', function() {
 		assert.deepEqual(['1', '2'], uri.getParameterValues('a'));
 	});
 
+
+	it.only('should set undefined and null parameter values in uri', () => {
+		let uri = new Uri();
+		uri.setParameterValues('a', [null, '1', 'b']);
+		assert.strictEqual(null, uri.getParameterValue('a'));
+		assert.deepEqual([null ,'1', 'b'], uri.getParameterValues('a'))
+	});
+
 	it('should add parameter value in uri', function() {
 		let uri = new Uri();
 		uri.addParameterValue('a', '1');
